@@ -1,3 +1,8 @@
+This is just a fork of [chat.io](https://raw.githubusercontent.com/OmarElGabry/chat.io/) where I added a Dockerfile and a docker-compose file. So if you want app up and running in a docker environment. Run the following in the directory of the app.
+
+`> docker-compose up --build`
+
+
 ![Screenshot](https://raw.githubusercontent.com/OmarElGabry/chat.io/master/public/img/chat.io.gif)
 
 # chat.io
@@ -49,7 +54,7 @@ Make sure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.co
 
 	```
 	$ redis-server
-	``` 
+	```
 5. Start the application
 
 	```
@@ -67,10 +72,10 @@ Make sure you have the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed
 	$ git push heroku master
 	```
 
-2. Now, you need to set up configuration variables on Heroku. 
+2. Now, you need to set up configuration variables on Heroku.
 	1. Go to Settings -> Reveal Config Vars.
-	2. Add configuration variables. All needed variables are inside _app/config/index.js_. 
-	Typically, these are the configuration variables you need to assign: 
+	2. Add configuration variables. All needed variables are inside _app/config/index.js_.
+	Typically, these are the configuration variables you need to assign:
 	``` { dbURI, sessionSecret, facebookClientID, facebookClientSecret, twitterConsumerKey, twitterConsumerSecret } ```.
 
 3. One last step is to add [Redis](http://redis.io/) as an Add-on on Heroku.
@@ -120,10 +125,10 @@ The session needs a random string to make sure the session id in the browser is 
 
 
 ### Database<a name="database"></a>
-Mongoose is used to interact with a MongoDB that's hosted by MongoLab. 
+Mongoose is used to interact with a MongoDB that's hosted by MongoLab.
 
 #### Schemas
-There are two schemas; users and rooms. 
+There are two schemas; users and rooms.
 
 Each user has a username, passowrd, social Id, and picture. If the user is logged via username and password, then social Id has to be null, and the if logged in via a social account, then the password will be null.
 
@@ -141,12 +146,12 @@ User can login using either a username and password, or login via a social accou
 ### Sockets<a name="sockets"></a>
 Having an active connection opened between the client and the server so client can send and receive data. This allows real-time communication using TCP sockets. This is made possible by [Socket.io](https://github.com/socketio/socket.io).
 
-The client starts by connecting to the server through a socket(maybe also assigned to a specific namespace). Once connections is successful, client and server can emit and listen to events. 
+The client starts by connecting to the server through a socket(maybe also assigned to a specific namespace). Once connections is successful, client and server can emit and listen to events.
 
 There are two namespaces used; `/rooms` and `/chatroom`.
 
 ### Logger<a name="logger"></a>
-And It doesn't go without saying, you need to monitor your application. [Winston](https://github.com/winstonjs/winston) can log and catch Uncaught Exceptions. All logs are displayed in the console, and saved in _debug.log_ file. 
+And It doesn't go without saying, you need to monitor your application. [Winston](https://github.com/winstonjs/winston) can log and catch Uncaught Exceptions. All logs are displayed in the console, and saved in _debug.log_ file.
 
 On Heroku, you can monitor the logs by clicking on _More -> View Logs_ on the top left of your application dashboard.
 

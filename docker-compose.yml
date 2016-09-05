@@ -1,0 +1,19 @@
+version: '2'
+services:
+  chatio:
+    build: .
+    ports: 
+      - 3000:3000
+    links:
+      - redis
+      - mongodb
+
+  redis:
+    image: redis:latest
+
+  mongodb:
+    image: tutum/mongodb:latest
+    environment:
+      - AUTH=no
+
+   
